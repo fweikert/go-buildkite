@@ -38,15 +38,22 @@ type CreatePipeline struct {
 
 // Pipeline represents a buildkite pipeline.
 type Pipeline struct {
-	ID         *string    `json:"id,omitempty"`
-	URL        *string    `json:"url,omitempty"`
-	WebURL     *string    `json:"web_url,omitempty"`
-	Name       *string    `json:"name,omitempty"`
-	Slug       *string    `json:"slug,omitempty"`
-	Repository *string    `json:"repository,omitempty"`
-	BuildsURL  *string    `json:"builds_url,omitempty"`
-	BadgeURL   *string    `json:"badge_url,omitempty"`
-	CreatedAt  *Timestamp `json:"created_at,omitempty"`
+	ID                              *string    `json:"id,omitempty"`
+	URL                             *string    `json:"url,omitempty"`
+	WebURL                          *string    `json:"web_url,omitempty"`
+	Name                            *string    `json:"name,omitempty"`
+	Slug                            *string    `json:"slug,omitempty"`
+	Repository                      *string    `json:"repository,omitempty"`
+	BuildsURL                       *string    `json:"builds_url,omitempty"`
+	BadgeURL                        *string    `json:"badge_url,omitempty"`
+	CreatedAt                       *Timestamp `json:"created_at,omitempty"`
+	Description                     *string    `json:"description,omitempty"`
+	BranchConfiguration             *string    `json:"branch_configuration,omitempty"`
+	DefaultBranch                   *string    `json:"default_branch,omitempty"`
+	SkipQueuedBranchBuilds          bool       `json:"skip_queued_branch_builds,omitempty"`
+	SkipBueuedBranchBuildsFilter    *string    `json:"skip_queued_branch_builds_filter,omitempty"`
+	CancelRunningBranchBuilds       bool       `json:"cancel_running_branch_builds,omitempty"`
+	CancelRunningBranchBuildsFilter *string    `json:"cancel_running_branch_builds_filter,omitempty"`
 
 	ScheduledBuildsCount *int `json:"scheduled_builds_count,omitempty"`
 	RunningBuildsCount   *int `json:"running_builds_count,omitempty"`
@@ -63,8 +70,9 @@ type Pipeline struct {
 
 // Provider represents a source code provider.
 type Provider struct {
-	ID         *string `json:"id,omitempty"`
-	WebhookURL *string `json:"webhook_url,omitempty"`
+	ID         *string                `json:"id,omitempty"`
+	WebhookURL *string                `json:"webhook_url,omitempty"`
+	Settings   map[string]interface{} `json:"settings,omitempty"`
 }
 
 // Step represents a build step in buildkites build pipeline
@@ -76,6 +84,8 @@ type Step struct {
 	BranchConfiguration *string           `json:"branch_configuration,omitempty"`
 	Env                 map[string]string `json:"env,omitempty"`
 	TimeoutInMinutes    *int              `json:"timeout_in_minutes,omitempty"`
+	Concurrency         *int              `json:"concurrency,omitempty"`
+	Parallelism         *int              `json:"parallelism,omitempty"`
 	AgentQueryRules     []string          `json:"agent_query_rules,omitempty"`
 }
 
