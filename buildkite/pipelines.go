@@ -50,6 +50,7 @@ type Pipeline struct {
 	Description                     *string    `json:"description,omitempty"`
 	BranchConfiguration             *string    `json:"branch_configuration,omitempty"`
 	DefaultBranch                   *string    `json:"default_branch,omitempty"`
+	Configuration                   *string    `json:"configuration,omitempty"`
 	SkipQueuedBranchBuilds          bool       `json:"skip_queued_branch_builds,omitempty"`
 	SkipBueuedBranchBuildsFilter    *string    `json:"skip_queued_branch_builds_filter,omitempty"`
 	CancelRunningBranchBuilds       bool       `json:"cancel_running_branch_builds,omitempty"`
